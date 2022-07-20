@@ -6,5 +6,11 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :new, :create ]
   end
 
-  resources :bookings, except: [ :new, :create ]
+  resources :bookings, except: [ :new, :create ] do
+    collection do
+      get '/requests', to: 'bookings#requests_index', as: 'requests'
+      patch '/bookings/:id', to: 'bookings#request_accept'
+      patch '/bookings/:id', to: 'bookings#request_deny'
+    end
+  end
 end
