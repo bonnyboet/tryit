@@ -1,20 +1,20 @@
 class EquipmentListingsController < ApplicationController
   def index
-    @equipments = Equipment.all
+    @equipments = EquipmentListing.all
   end
 
   def show
-    @equipment = Equipment.find(params[:equipment_id])
+    @equipment = EquipmentListing.find(params[:id])
   end
 
   def new
-    @equipment = Equipment.find(params[:equipment_id])
+    @equipment = EquipmentListing.find(params[:equipment_id])
     @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(booking_params)
-    @equipment = Equipment.find(params[:equipment_id])
+    @equipment = EquipmentListing.find(params[:equipment_id])
     @booking.equipment = @equipment
     @booking.save
     @restaurant.save
@@ -22,11 +22,11 @@ class EquipmentListingsController < ApplicationController
   end
 
   def update
-    @equipment = Equipment.find(params[:equipment_id])
+    @equipment = EquipmentListing.find(params[:equipment_id])
   end
 
   def edit
-    @equipment = Equipment.find(params[:equipment_id])
+    @equipment = EquipmentListing.find(params[:equipment_id])
   end
 
   private

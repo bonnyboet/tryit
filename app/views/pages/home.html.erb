@@ -1,2 +1,38 @@
+
+<div class="navbar">
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Menu
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Sign In</a>
+    <a class="dropdown-item" href="#">Sign Up</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+</div>
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">My Lists</h3>
+    <%= link_to "Create a equipment listing", new_equipment_listing_path, class: "btn btn-flat" %>
+  </div>
+  <div class="row">
+    <% EquipmentListing.all.each do |equipment| %>
+      <div class="co-12 col-sm-6 col-md-4 mb-3">
+      <div class="card-title">
+        <%= link_to equipment_listing_path(equipment), class:"text-decoration-none" do %>
+            <%= equipment.name %>
+            <% end %>
+          </div>
+          <div class="card-category float-right">
+          <p class="float-right"><%= equipment.category %></p>
+          </div>
+          <div class="card-body">
+            <p><%= equipment.description %></p>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
