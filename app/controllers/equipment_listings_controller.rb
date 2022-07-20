@@ -1,4 +1,4 @@
-class EquipmentController < ApplicationController
+class EquipmentListingsController < ApplicationController
   def index
     @equipments = Equipment.all
   end
