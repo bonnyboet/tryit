@@ -7,11 +7,22 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
   end
 
-  # def new
-  # end
+  def new
+    @equipment_listing = EquipmentListing.find(params[:equipment_listing_id])
+    @booking = Booking.new
+  end
 
-  # def create
-  # end
+  def create
+    @equipment_listing = EquipmentListing.find(params[:equipment_listing_id])
+    @booking = Booking.new(booking_params)
+    @booking.equipment_listing = @equipment_listing
+    @booking.user = current_user
+    if @booking.save
+      redirect_to equipment_listing_bookings_path(@booking)
+    else
+      redirect_to equipment_listing_path(@equipment_listing)
+    end
+  end
 
   def requests_index
     @requests_pending = Booking.where("status = 'pending'")
