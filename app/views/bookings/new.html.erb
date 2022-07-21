@@ -1,4 +1,9 @@
-<div class="container">
+<div class="container mt-5">
 <h2><%= @equipment_listing.name %></h2>
   <%# need an address attribute for listing %>
+  <%= simple_form_for [@booking] do |f| %>
+  <%= f.date_field :book_from %>
+  <%= f.date_field :book_to %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
 </div>

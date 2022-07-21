@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  # before_action :set_booking, only: [:show]
+
   def index
     @bookings = Booking.where("status = 'accepted'")
   end
@@ -13,14 +15,14 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @equipment_listing = EquipmentListing.find(params[:equipment_listing_id])
     @booking = Booking.new(booking_params)
+    @equipment_listing = EquipmentListing.find(params[:equipment_listing_id])
     @booking.equipment_listing = @equipment_listing
     @booking.user = current_user
     if @booking.save
-      redirect_to equipment_listing_bookings_path(@booking)
+      redirect_to  equipment_listing_booking_path(@equipment_listing, @booking)
     else
-      redirect_to equipment_listing_path(@equipment_listing)
+      render :new
     end
   end
 
@@ -58,6 +60,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:status, :user_id, :listing_id)
+    params.require(:booking).permit(:status, :user_id, :equipment_listing_id, :book_from, :book_to)
   end
 end
