@@ -1,5 +1,5 @@
 class EquipmentListing < ApplicationRecord
-  belongs_to :user, class_name: "User"
+  belongs_to :owner, class_name: "User"
   has_many :renters, through: :bookings
 
   validates :name, presence: true
