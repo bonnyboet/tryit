@@ -1,6 +1,7 @@
 class EquipmentListing < ApplicationRecord
-  belongs_to :owner, class_name: "User"
-  has_many :renters, through: :bookings
+  #user is the owner
+  belongs_to :user
+  has_many :bookings
 
   validates :name, presence: true
   validates :description, presence: true, length: { in: 30..500 }
