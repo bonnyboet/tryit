@@ -32,6 +32,8 @@ gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'simple_form', github: 'heartcombo/simple_form'
 
+gem 'popper_js', '~> 2.11.5'
+
 # Added gems by team
 # Devise - handles authentication
 gem 'devise'
