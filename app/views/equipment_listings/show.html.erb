@@ -7,6 +7,7 @@
     <li> equipment available   : <%= @equipment_listing.available %>
     <li> equipment user_id     : <%= @equipment_listing.user_id %>
   </ul>
+  <%= link_to "Back to Index", equipment_listings_path %> |
   <%= link_to "Book this item", new_equipment_listing_booking_path(@equipment_listing) %>
 <% else %>
   No item found for ID <% @equipment_listing_id %>
