@@ -3,6 +3,8 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 After clone, please perform the below command to prepare the application and host it locally.
 
 ```bash
+bundle install
+yarn install
 rails db:drop
 rails db:create
 rails db:migrate
