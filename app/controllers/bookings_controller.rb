@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
     @equipment_listing = EquipmentListing.find(params[:equipment_listing_id])
     @booking.equipment_listing = @equipment_listing
     @booking.user = current_user
+    raise
     if @booking.save
       redirect_to  equipment_listing_booking_path(@equipment_listing, @booking)
     else
