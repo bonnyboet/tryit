@@ -18,6 +18,7 @@ require 'faker'
     category: category.sample,
     hourly_rate: Faker::Number.decimal_part(digits: 2),
     available: true,
-    user_id: User.last.id
+    user_id: User.last.id,
+    address: Faker::Address.full_address
   )
 end
