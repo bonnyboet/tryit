@@ -1,19 +1,34 @@
-booking index
 <div class="row d-flex align-items-center justify-content-between mb-3">
   <h3 class="mb-0">My Bookings</h3>
 </div>
 
-<div class="row d-flex flex-wrap justify-content-between">
+<div class="row d-flex flex-wrap">
+
+<div class="col-12 col-sm-6 col-md-4 mr-6 bookings-list-item">
+<div class="card-image" style="background-image: url(https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fwww.myactivesg.com%2F-%2Fmedia%2FSSC%2FConsumer%2FImages%2FSports%2FTennis%2FGC111_1_Wikimedia.ashx%3Fla%3Den%26hash%3D229D29EB150343A79B4DDC43213C71544F0D1692)">
+  <p class="card-subtitle ma-2 status accepted">accepted <span class="material-icons">check_circle_outline</span></p>
+</div>
+<div class="card-body">
+  <div class="booking-header">
+    <h3 class="card-title ma-0">Tennis Set</h3>
+  </div>
+  <p>01 Jan 01:34 - 01 Jan 09:40</p>
+  <a href="#">VIEW LISTING</a>
+</div>
+</div>
+
+
   <% @bookings.each do | booking | %>
-  <div class="col-12 col-sm-6 col-md-3 mr-6 bookings-list-item">
+  <div class="col-12 col-sm-6 col-md-4 mr-6 bookings-list-item">
     <div class="card-image">
-    </div>
+      <p class="card-subtitle ma-2 status"><%= booking.status %></p>
+   </div>
     <div class="card-body">
       <div class="booking-header">
         <h3 class="card-title ma-0"><%= booking.equipment_listing.name %></h3>
-        <p class="card-subtitle ma-0 status"><%= booking.status %></p>
       </div>
-      <p><%= booking.book_from.to_s %> - <%= booking.book_to.to_s %></p>
+      <p><%= booking.book_from.to_formatted_s(:short) %> - <%= booking.book_to.to_formatted_s(:short) %></p>
+      <p><%= link_to 'View listing', equipment_listing_path(booking.equipment_listing) %>
     </div>
   </div>
   <% end %>
@@ -31,7 +46,7 @@ booking index
       status.classList.add('pending');
       status.innerHTML = 'pending <span class="material-icons">pending</span>';
 
-      } else {
+      } else if (status.innerHTML === 'denied') {
        status.classList.add('denied');
        status.innerHTML = 'denied <span class="material-icons">cancel</span> ';
       }
