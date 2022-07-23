@@ -16,16 +16,18 @@ class EquipmentListingsController < ApplicationController
   end
 
   def new
-    @equipment_listing = EquipmentListing.find(params[:equipment_id])
-    @booking = Booking.new
+    @equipment_listing = EquipmentListing.new
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @equipment_listing = EquipmentListing.find(params[:equipment_id])
-    @booking.equipment = @equipment
-    @booking.save
-    redirect_to equipment_path(@equipment)
+    @user_id = current_user.id
+    @equipment_listing = EquipmentListing.new(listing_params)
+    @equipment_listing.user_id = @user_id
+    if @equipment_listing.save
+      redirect_to equipment_listing_path(@equipment_listing)
+    else
+      render new
+    end
   end
 
   def update
@@ -38,8 +40,8 @@ class EquipmentListingsController < ApplicationController
 
   private
 
-  def booking_params
-    params.require(:booking).permit(:status, :user_id, :listing_id)
+  def listing_params
+    params.require(:equipment_listing).permit(:name, :description, :category, :hourly_rate, :available, :photo, :address)
   end
 
   def record_not_found

@@ -34,6 +34,8 @@ gem 'simple_form', github: 'heartcombo/simple_form'
 
 gem 'popper_js', '~> 2.11.5'
 
+gem 'cloudinary', '~> 1.16.0'
+
 # Added gems by team
 # Devise - handles authentication
 gem 'devise'
