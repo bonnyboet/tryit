@@ -1,0 +1,14 @@
+.status {
+  & .pending {
+    color: orange;
+  }
+
+  & .accepted {
+    color: green;
+  }
+
+  & .denied {
+    color: red;
+  }
+
+}
