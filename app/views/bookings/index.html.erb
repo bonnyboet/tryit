@@ -1,32 +1,41 @@
-<div class="row d-flex align-items-center justify-content-between mb-3 pt-3">
-      <h3 class="mb-0">My Bookings</h3>
-    </div>
+booking index
+<div class="row d-flex align-items-center justify-content-between mb-3">
+  <h3 class="mb-0">My Bookings</h3>
+</div>
 
-    <div class="row">
-      <% @bookings.each do | booking | %>
-      <div class="card co-12 col-sm-6 col-md-3 m-5 border border-2 shadow bookings-list-item">
-        <div class="card-body">
-          <div style ="display: flex;">
-            <h3 class="card-title p-3"><%= booking.equipment_listing.name %></h3>
-            <p class="card-subtitle mb-2 status"><%= booking.status %></p>
-          </div>
-          <p><%= booking.book_from %> - <%= booking.book_to %></p>
-        </div>
+<div class="row d-flex flex-wrap justify-content-between">
+  <% @bookings.each do | booking | %>
+  <div class="col-12 col-sm-6 col-md-3 mr-6 bookings-list-item">
+    <div class="card-image">
+    </div>
+    <div class="card-body">
+      <div class="booking-header">
+        <h3 class="card-title ma-0"><%= booking.equipment_listing.name %></h3>
+        <p class="card-subtitle ma-0 status"><%= booking.status %></p>
       </div>
-      <% end %>
+      <p><%= booking.book_from.to_s %> - <%= booking.book_to.to_s %></p>
     </div>
+  </div>
+  <% end %>
 
-
+</div>
 <script>
+
   // Adding styling after generating bookings list
   var bookingStatus = document.querySelectorAll('.status')
   bookingStatus.forEach(status => {
     if (status.innerHTML === 'accepted') {
       status.classList.add('accepted');
+      status.innerHTML = 'accepted <span class="material-icons">check_circle_outline</span>';
     } else if (status.innerHTML === 'pending') {
       status.classList.add('pending');
+      status.innerHTML = 'pending <span class="material-icons">pending</span>';
+
       } else {
-        status.classList.add('denied');
+       status.classList.add('denied');
+       status.innerHTML = 'denied <span class="material-icons">cancel</span> ';
       }
   });
+
+
 </script>

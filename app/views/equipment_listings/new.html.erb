@@ -1,1 +1,13 @@
-<%= render "form", booking: @booking %>
+<div class="container pt-5">
+  <%# need an address attribute for listing %>
+  <%= simple_form_for [ @equipment_listing ] do |f| %>
+  <%= f.input :name %>
+  <%= f.text_area :description %>
+  <%= f.input :category %>
+  <%= f.input :hourly_rate %>
+  <%= f.input :available %>
+  <%= f.input :address %>
+  <%= f.input :photo, as: :file %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+</div>
