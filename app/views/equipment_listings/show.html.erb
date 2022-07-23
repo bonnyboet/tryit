@@ -1,3 +1,9 @@
+<div class="container">
+  <div class="d-flex align-items-center justify-content-between mb-3 pt-5">
+    <div class="text-decoration-none">
+      <%= link_to "Back to Index", root_path %>
+    </div>
+  </div>
 <% if  @equipment_listing.nil? == false %>
   <ul>
     <li> equipment name        : <%= @equipment_listing.name %>(<%= @equipment_listing.id %>)
@@ -7,8 +13,16 @@
     <li> equipment available   : <%= @equipment_listing.available %>
     <li> equipment user_id     : <%= @equipment_listing.user_id %>
   </ul>
-  <%= link_to "Back to Index", equipment_listings_path %> |
-  <%= link_to "Book this item", new_equipment_listing_booking_path(@equipment_listing) %>
+  <div class="container">
+    <% if user_signed_in? %>
+    <%= link_to "Book this item", new_equipment_listing_booking_path(@equipment_listing) %>
+    <% else %>
+    <p>Please sign in to make a booking</p>
+    <%= link_to "Sign In", new_user_session_path, class: "btn-primary text-decoration-none" %>
+    <%= link_to "Sign Up",  new_user_registration_path, class: "btn-flat text-decoration-none" %>
+    <% end %>
+  </div>
 <% else %>
   No item found for ID <%= @equipment_listing_id %>
 <% end %>
+</div>

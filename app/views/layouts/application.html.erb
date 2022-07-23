@@ -25,13 +25,14 @@
     <li><p class="dropdown-item"><%= current_user.email %></p></li>
     <li><a class="dropdown-item" href="#">Pending Reservations</a></li>
     <li><a class="dropdown-item" href="new_equipment_listing_path">Create Listing</a></li>
-    <li><a class="dropdown-item" href="destroy_user_session_path">Sign Out</a></li>
+    <li><p class="dropdown-item text-decoration-none" ><%= link_to "update", edit_user_registration_path, class: "btn-primary text-decoration-none"%></p></li>
+    <li><p class="dropdown-item text-decoration-none" ><%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "text-decoration-none"%></p></li>
   </ul>
 </div>
     <% else %>
       <div>
         <div class="btn">
-          <%= link_to "Sign In", new_user_session_path, class: "btn-flat text-decoration-none" %>
+          <%= link_to "Sign In", new_user_session_path, class: "btn-primary text-decoration-none" %>
         </div>
         <div class="btn">
           <%= link_to "Sign Up",  new_user_registration_path, class: "btn-flat text-decoration-none" %>
