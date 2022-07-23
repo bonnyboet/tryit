@@ -1,40 +1,28 @@
-
-<div class="navbar navbar fixed-top ">
-  <h1>Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
-  <div class="dropdown">
-    <p>We are currenty <%= user_signed_in? ? "" : "not" %> signed in.</p>
-    <% if user_signed_in? %>
-    <p>The user email: <%= current_user.email %></p>
-  <% end %>
-    <div class="btn">
-      <%= link_to "Sign In", new_user_session_path, class: "btn-flat" %>
-    </div>
-    <div class="btn">
-      <%= link_to "Sign Up",  new_user_registration_path, class: "btn-flat" %>
-    </div>
-  </div>
-</div>
-
 <div class="container py-5 mt-10">
   <div class="d-flex align-items-center justify-content-between mb-3">
-    <h3 class="mb-0">My Lists</h3>
-    <%= link_to "Create a equipment listing", new_equipment_listing_path, class: "btn btn-flat" %>
+    <%# <h3 class="mb-0">Filter will be here</h3> %>
+      <%# <%= link_to "Create a equipment listing", new_equipment_listing_path, class: "btn btn-flat" %>
   </div>
+
   <div class="row ">
     <% EquipmentListing.all.each do |equipment| %>
-      <div class="co-12 col-sm-6 col-md-3 m-5 border border-2 ">
-      <div class="card-title ">
-        <%= link_to equipment_listing_path(equipment), class:"text-decoration-none" do %>
+      <div class="card co-12 col-sm-6 col-md-3 m-5 border border-2 shadow">
+        <div class="card-body">
+          <div class="card-title p-3">
             <%= equipment.name %>
-            <% end %>
+            </div>
+        <div class="card-subtitle mb-2 text-muted">
+            <p><%= equipment.category %></p>
           </div>
-          <div class="card-category float-right">
-          <p class="float-right"><%= equipment.category %></p>
-          </div>
-          <div class="card-body">
+          <div class="card-text">
             <p><%= equipment.description %></p>
+            <div class="card-footer ">
+            <%= link_to equipment_listing_path(equipment), class:"text-decoration-none" do%>
+            <div class="card-link align-middle">Check it out</div>
+            <% end %>
+            </div>
           </div>
+      </div>
       </div>
     <% end %>
   </div>
