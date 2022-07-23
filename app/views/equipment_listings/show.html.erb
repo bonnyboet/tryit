@@ -5,21 +5,40 @@
     </div>
   </div>
 <% if  @equipment_listing.nil? == false %>
-  <ul>
-    <li> equipment name        : <%= @equipment_listing.name %>(<%= @equipment_listing.id %>)
-    <li> equipment description : <%= @equipment_listing.description %>
-    <li> equipment category    : <%= @equipment_listing.category %>
-    <li> equipment hourly_rate : <%= @equipment_listing.hourly_rate %>
-    <li> equipment available   : <%= @equipment_listing.available %>
-    <li> equipment user_id     : <%= @equipment_listing.user_id %>
-  </ul>
+  <div class="d-flex flex-column">
+    <div>
+    <div class="d-flex flex-fill">
+    <!-- GET IMAGE FROM cloudinary LATER -->
+      <img width="100%" src="<%= Faker::LoremFlickr.image(size: "1024x512", search_terms: ["#{@equipment_listing.name} sports"]) %>">
+    </div>
+    </div>
+    <div class="d-flex">
+      <div class="flex-fill">
+        <div class="card-title p-3">
+          <h2>
+            <%= @equipment_listing.name %>
+          </h2>
+        </div>
+        <div class="card-subtitle mb-2 status">
+          <h3>
+            <%= @equipment_listing.description %>
+          </h3>
+        </div>
+      </div>
+        <% if @equipment_listing.available %>
+          <div class="btn btn-success">Available</div>
+        <% else %>
+          <div class="btn btn-secondary">Not Available</div>
+        <% end %>
+    </div>
+  </div>
   <div class="container">
     <% if user_signed_in? %>
-    <%= link_to "Book this item", new_equipment_listing_booking_path(@equipment_listing) %>
+    <%= link_to "Book this item", new_equipment_listing_booking_path(@equipment_listing), class: "btn btn-primary text-decoration-none" %>
     <% else %>
     <p>Please sign in to make a booking</p>
-    <%= link_to "Sign In", new_user_session_path, class: "btn-primary text-decoration-none" %>
-    <%= link_to "Sign Up",  new_user_registration_path, class: "btn-flat text-decoration-none" %>
+      <%= link_to "Sign In", new_user_session_path, class: "btn-primary text-decoration-none" %>
+      <%= link_to "Sign Up",  new_user_registration_path, class: "btn-flat text-decoration-none" %>
     <% end %>
   </div>
 <% else %>
