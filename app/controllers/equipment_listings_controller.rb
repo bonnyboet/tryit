@@ -8,6 +8,7 @@ class EquipmentListingsController < ApplicationController
   def show
     @equipment_listing_id = params[:id]
     @equipment_listing = EquipmentListing.find(@equipment_listing_id)
+    @booking = Booking.new
 
     # if @equipment_listing.nil?
     #   @equipment_listing_id = params[:id]

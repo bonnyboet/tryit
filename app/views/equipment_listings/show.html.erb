@@ -1,45 +1,34 @@
 <div class="d-flex align-items-center justify-content-between mb-3 pt-5">
-    <div class="text-decoration-none">
-      <%= link_to "Back to Index", root_path %>
-    </div>
+  <div class="text-decoration-none">
+    <%= link_to "Back", root_path, class: "btn-pink" %>
   </div>
-<% if  @equipment_listing.nil? == false %>
-  <div class="d-flex flex-column">
-    <div>
-    <div class="d-flex flex-fill">
-    <!-- GET IMAGE FROM cloudinary LATER -->
-      <img width="100%" src="<%= Faker::LoremFlickr.image(size: "1024x512", search_terms: ["#{@equipment_listing.name} sports"]) %>">
-    </div>
-    </div>
-    <div class="d-flex">
-      <div class="flex-fill">
-        <div class="card-title p-3">
-          <h2>
-            <%= @equipment_listing.name %>
-          </h2>
-        </div>
-        <div class="card-subtitle mb-2 status">
-          <h3>
-            <%= @equipment_listing.description %>
-          </h3>
+</div>
+
+<div class="container">
+  <% if  @equipment_listing.nil? == false %>
+    <div class="d-flex flex-column">
+      <div>
+        <div class="d-flex flex-fill">
+        <!-- GET IMAGE FROM cloudinary LATER -->
+          <img id="show-page-image" width="100%" src="<%= Faker::LoremFlickr.image(size: "1024x512", search_terms: ["#{@equipment_listing.name} sports"]) %>">
         </div>
       </div>
-        <% if @equipment_listing.available %>
-          <div class="btn btn-success">Available</div>
-        <% else %>
-          <div class="btn btn-secondary">Not Available</div>
-        <% end %>
+      <div class="d-flex">
+        <div class="flex-fill">
+          <div class="card-title p-3">
+            <h2><%= @equipment_listing.name %></h2>
+          </div>
+          <div class="card-subtitle mb-2 status">
+            <p><%= @equipment_listing.description %></p>
+          </div>
+        </div>
+     <%= render "bookings/form", booking: @booking %>
+      </div>
     </div>
-  </div>
-  <div class="container">
-    <% if user_signed_in? %>
-    <%= link_to "Book this item", new_equipment_listing_booking_path(@equipment_listing), class: "btn btn-primary text-decoration-none" %>
+    <div class="container">
+
+    </div>
     <% else %>
-    <p>Please sign in to make a booking</p>
-      <%= link_to "Sign In", new_user_session_path, class: "btn-primary text-decoration-none" %>
-      <%= link_to "Sign Up",  new_user_registration_path, class: "btn-flat text-decoration-none" %>
-    <% end %>
-  </div>
-<% else %>
-  No item found for ID <%= @equipment_listing_id %>
-<% end %>
+      No item found for ID <%= @equipment_listing_id %>
+  <% end %>
+</div>

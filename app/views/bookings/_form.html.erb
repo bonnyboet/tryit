@@ -1,0 +1,13 @@
+  <div class="booking-form-container">
+    <%# need an address attribute for listing %>
+    <div class="form-wrapper">
+      <div class="rate-container">
+        <p><%= "$" %><%= @equipment_listing.hourly_rate %><%= " hour" %></p>
+      </div>
+        <%= simple_form_for [ @equipment_listing, @booking ] do |f| %>
+        <%= f.datetime_field :book_from %>
+        <%= f.datetime_field :book_to %>
+        <%= f.button :submit, class: "btn-pink" %>
+      <% end %>
+    </div>
+  </div>
