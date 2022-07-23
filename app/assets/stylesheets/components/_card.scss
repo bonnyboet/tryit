@@ -1,3 +1,18 @@
+.card-body > div.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  p {
+    display: flex;
+    margin-top: 3px;
+
+    span {
+      margin-left: 8px;
+    }
+  }
+}
+
 .status {
   &.pending {
     color: orange;
