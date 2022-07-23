@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     if @booking.save
-      redirect_to  equipment_listing_booking_path(@equipment_listing, @booking)
+      redirect_to bookings_path # /bookings ... BookingsController#index
     else
       render :new
     end
