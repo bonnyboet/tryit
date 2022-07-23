@@ -1,6 +1,4 @@
-  <div class="container py-5 mt-10">
-
-    <div class="row d-flex align-items-center justify-content-between mb-3">
+<div class="row d-flex align-items-center justify-content-between mb-3 pt-3">
       <h3 class="mb-0">My Bookings</h3>
     </div>
 
@@ -18,7 +16,6 @@
       <% end %>
     </div>
 
-</div>
 
 <script>
   // Adding styling after generating bookings list
@@ -29,7 +26,7 @@
     } else if (status.innerHTML === 'pending') {
       status.classList.add('pending');
       } else {
-       status.classList.add('denied');
+        status.classList.add('denied');
       }
   });
 </script>
