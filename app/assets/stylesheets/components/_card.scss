@@ -1,13 +1,13 @@
 .status {
-  & .pending {
+  &.pending {
     color: orange;
   }
 
-  & .accepted {
+  &.accepted {
     color: green;
   }
 
-  & .denied {
+  &.denied {
     color: red;
   }
 
