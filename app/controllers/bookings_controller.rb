@@ -2,11 +2,7 @@ class BookingsController < ApplicationController
   # before_action :set_booking, only: [:show]
 
   def index
-    @bookings = Booking.where("status = 'accepted'")
-  end
-
-  def show
-    @booking = Booking.find(params[:id])
+    @bookings = Booking.all
   end
 
   def new
