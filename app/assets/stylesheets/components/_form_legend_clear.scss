@@ -8,3 +8,32 @@
 legend ~ div.form-check:first-of-type {
   clear: left;
 }
+
+.booking-form-container {
+  width: 350px;
+  height: 300px;
+  padding: 16px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-wrapper {
+  margin: 8px;
+  margin-top: 24px;
+  padding: 0;
+}
+
+p {
+  font-size: 18px;
+}
+
+#booking_book_from, #booking_book_to {
+  font-size: 16px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  padding: 8px;
+  width: 100%;
+}
