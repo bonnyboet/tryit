@@ -9,9 +9,6 @@ Booking.destroy_all
 EquipmentListing.destroy_all
 User.destroy_all
 
-
-require 'faker'
-
 10.times do
   category = ["indoors", "outdoors", "winter"]
   User.create!(
