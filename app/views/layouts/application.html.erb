@@ -23,9 +23,9 @@
   </button>
   <ul class="dropdown-menu text-left" aria-labelledby="dropdownMenuButton1">
     <li><p class="dropdown-item"><%= current_user.email %></p></li>
-    <li><a class="dropdown-item" href="#">Pending Reservations</a></li>
     <li><a class="dropdown-item" href="new_equipment_listing_path">Create Listing</a></li>
-    <li><p class="dropdown-item text-decoration-none" ><%= link_to "update", edit_user_registration_path, class: "btn-primary text-decoration-none"%></p></li>
+    <li><p class="dropdown-item text-decoration-none" ><%= link_to "Pending Reservations", bookings_path, class: "btn-primary text-decoration-none"%></p></li>
+    <li><p class="dropdown-item text-decoration-none" ><%= link_to "Account Details", edit_user_registration_path, class: "btn-primary text-decoration-none"%></p></li>
     <li><p class="dropdown-item text-decoration-none" ><%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "text-decoration-none"%></p></li>
   </ul>
 </div>
@@ -42,7 +42,8 @@
 </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
+  <div class="container py-5 mt-10">
     <%= yield %>
+  </div>
   </body>
 </html>
