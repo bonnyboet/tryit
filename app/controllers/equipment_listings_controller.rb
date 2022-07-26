@@ -2,7 +2,11 @@ class EquipmentListingsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   def index
-    @equipment_listings = EquipmentListing.all
+    if params[:query].present?
+      @equipment_listings = EquipmentListing.global_search(params[:query])
+    else
+      @equipment_listings = EquipmentListing.all
+    end
   end
 
   def show
