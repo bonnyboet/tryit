@@ -36,11 +36,15 @@ class EquipmentListingsController < ApplicationController
   end
 
   def update
-    @equipment_listing = EquipmentListing.find(params[:equipment_id])
+    @equipment_listing = EquipmentListing.find(params[:id])
+
+    @equipment_listing.update(listing_params)
+
+    redirect_to equipment_listing_path(@equipment_listing)
   end
 
   def edit
-    @equipment_listing = EquipmentListing.find(params[:equipment_id])
+    @equipment_listing = EquipmentListing.find(params[:id])
   end
 
   private
