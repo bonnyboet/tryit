@@ -4,7 +4,11 @@ After clone, please perform the below command to prepare the application and hos
 
 ```bash
 bundle install
+rails g pundit:install
+rails g pg_search:migration:multisearch
+rails g simple_form:install --bootstrap
 yarn install
+yarn add bootstrap
 rails db:drop
 rails db:create
 rails db:migrate
