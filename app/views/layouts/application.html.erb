@@ -17,7 +17,20 @@
   <body>
   <div class="px-5 py-2 navbar fixed-top nav nav-item dropdown p-1 shadow">
     <div class="container">
+      <!-- Brand and logo -->
       <h1 style="margin: 0!important;">TryIt</h1>
+
+      <!-- Search Bar -->
+      <%= form_tag equipment_listings_path, method: :get do %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a Sports Equipment"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+
+      <!-- Dropdown menu -->
       <% if user_signed_in? %>
       <div class="dropdown">
       <button class="btn dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

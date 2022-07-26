@@ -2,7 +2,11 @@ class EquipmentListingsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   def index
-    @equipment_listings = EquipmentListing.all
+    if params[:query].present?
+      @equipment_listings = EquipmentListing.global_search(params[:query])
+    else
+      @equipment_listings = EquipmentListing.all
+    end
   end
 
   def show
@@ -32,11 +36,15 @@ class EquipmentListingsController < ApplicationController
   end
 
   def update
-    @equipment_listing = EquipmentListing.find(params[:equipment_id])
+    @equipment_listing = EquipmentListing.find(params[:id])
+
+    @equipment_listing.update(listing_params)
+
+    redirect_to equipment_listing_path(@equipment_listing)
   end
 
   def edit
-    @equipment_listing = EquipmentListing.find(params[:equipment_id])
+    @equipment_listing = EquipmentListing.find(params[:id])
   end
 
   private
