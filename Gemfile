@@ -37,8 +37,12 @@ gem 'popper_js', '~> 2.11.5'
 gem 'cloudinary', '~> 1.16.0'
 
 # Added gems by team
+
 # Devise - handles authentication
 gem 'devise'
+
+# PG Search -
+gem 'pg_search', '~> 2.3.0'
 
 group :development, :test do
   gem 'pry-byebug'
