@@ -31,7 +31,7 @@ class EquipmentListingsController < ApplicationController
     if @equipment_listing.save
       redirect_to equipment_listing_path(@equipment_listing)
     else
-      render new
+      render :new
     end
   end
 
