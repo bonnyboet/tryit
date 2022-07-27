@@ -1,19 +1,28 @@
-  <!-- <div class="booking-form-container"> -->
-    <div class="form-wrapper">
-      <div class="rate-container">
-        <p></p>
-      </div>
-      <div class="container pt-5">
-        <%= simple_form_for [ @equipment_listing ] do |f| %>
-        <%= f.input :name %>
-        <%= f.text_area :description %>
-        <%= f.input :category %>
-        <%= f.input :hourly_rate %>
-        <%= f.input :available %>
-        <%= f.input :address %>
-        <%= f.input :photo, as: :file %>
-        <%= f.button :submit, class: "btn btn-primary" %>
-        <% end %>
-      </div>
-    </div>
-<!-- </div> -->
+<div class="form-wrapper">
+  <div class="rate-container">
+    <p></p>
+  </div>
+  <div class="container pt-5">
+    <%= simple_form_for [ @equipment_listing ] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description, as: :text %>
+    <%= f.input :category, collection: [
+                              'Archery',
+                              'Ball & Net',
+                              'Bat & Ball',
+                              'Board',
+                              'Climbing',
+                              'Cycling',
+                              'Combat',
+                              'Snow Sports',
+                              'Aquatic Sports',
+                              'Others'
+                            ]
+ %>
+    <%= f.input :hourly_rate, input_html: { min: 0, max: 1000 } %>
+    <%= f.input :address %>
+    <%= f.input :photo, as: :file %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -10,7 +10,11 @@
       <div>
         <div class="d-flex flex-fill">
         <!-- GET IMAGE FROM cloudinary LATER -->
-          <img id="show-page-image" width="100%" src="<%= Faker::LoremFlickr.image(size: "1024x512", search_terms: ["#{@equipment_listing.name} sports"]) %>">
+          <% if @equipment_listing.photo.key.nil? %>
+            <%= "No Image available yet" %>
+          <% else %>
+          <%= cl_image_tag @equipment_listing.photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
         </div>
       </div>
       <div class="d-flex">

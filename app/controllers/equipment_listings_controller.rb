@@ -2,8 +2,13 @@ class EquipmentListingsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   def index
+    @selected_category = params[:category]
+
     if params[:query].present?
       @equipment_listings = EquipmentListing.global_search(params[:query])
+
+    elsif @selected_category.present?
+      @equipment_listings = EquipmentListing.global_search(@selected_category)
     else
       @equipment_listings = EquipmentListing.all
     end
@@ -17,7 +22,7 @@ class EquipmentListingsController < ApplicationController
     # if @equipment_listing.nil?
     #   @equipment_listing_id = params[:id]
     # end
-  rescue ActiveRecord::RecordNotFound
+    rescue ActiveRecord::RecordNotFound
   end
 
   def new
@@ -31,7 +36,7 @@ class EquipmentListingsController < ApplicationController
     if @equipment_listing.save
       redirect_to equipment_listing_path(@equipment_listing)
     else
-      render new
+      render :new
     end
   end
 
