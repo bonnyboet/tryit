@@ -60,10 +60,16 @@
 
 
 .dropdown-item {
+  text-decoration: none;
   &:hover {
     color: #000000;
     border: none;
     background: $light-aqua;
     transition: 0.3s ease-in-out;
 }
+}
+
+.btn-input {
+  background: $light-aqua;
+background: linear-gradient(0deg, rgba(46,196,182,1) 0%, rgba(161,230,224,1) 100%);
 }

@@ -52,10 +52,10 @@
       </button>
       <ul class="dropdown-menu text-left" aria-labelledby="dropdownMenuButton1">
         <li><p class="dropdown-item"><%= current_user.email %></p></li>
-        <li><p class="dropdown-item text-decoration-none" ><%= link_to "Create Listing", new_equipment_listing_path, class: " text-decoration-none"%></p></li>
-        <li><p class="dropdown-item text-decoration-none" ><%= link_to "Pending Bookings", bookings_path, class: "text-decoration-none"%></p></li>
-        <li><p class="dropdown-item text-decoration-none" ><%= link_to "update", edit_user_registration_path, class: "text-decoration-none"%></p></li>
-        <li><p class="dropdown-item text-decoration-none" ><%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "text-decoration-none"%></p></li>
+        <li><p class="dropdown-item" ><%= link_to "Create Listing", new_equipment_listing_path %></p></li>
+        <li><p class="dropdown-item" ><%= link_to "Pending Bookings", bookings_path %></p></li>
+        <li><p class="dropdown-item" ><%= link_to "update", edit_user_registration_path %></p></li>
+        <li><p class="dropdown-item" ><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></p></li>
       </ul>
       </div>
           <% else %>
