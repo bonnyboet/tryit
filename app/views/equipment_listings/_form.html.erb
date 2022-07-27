@@ -6,7 +6,19 @@
     <%= simple_form_for [ @equipment_listing ] do |f| %>
     <%= f.input :name %>
     <%= f.input :description, as: :text %>
-    <%= f.input :category, collection: [ "indoors", "outdoors", "winter"] %>
+    <%= f.input :category, collection: [
+                              'Archery',
+                              'Ball & Net',
+                              'Bat & Ball',
+                              'Board',
+                              'Climbing',
+                              'Cycling',
+                              'Combat',
+                              'Snow Sports',
+                              'Aquatic Sports',
+                              'Others'
+                            ]
+ %>
     <%= f.input :hourly_rate, input_html: { min: 0, max: 1000 } %>
     <%= f.input :address %>
     <%= f.input :photo, as: :file %>
