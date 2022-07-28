@@ -11,8 +11,7 @@
   padding: 14px 24px;
   border: none;
   transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
-  background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
-  color: #fff;
+  background: linear-gradient(90deg, rgba(255,159,28,1) 0%, rgba(255,174,65,1) 58%, rgba(255,184,88,1) 100%);
   width: 100%;
   text-decoration: none;
   &:hover {
@@ -50,4 +49,27 @@
       border-color: #000000;
       background: #f7f7f7;
   }
+}
+
+.dropdown-toggle {
+  outline: none;
+  border-radius: 8px;
+  border: none;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+  }
+
+
+.dropdown-item {
+  text-decoration: none;
+  &:hover {
+    color: #000000;
+    border: none;
+    background: $light-aqua;
+    transition: 0.3s ease-in-out;
+}
+}
+
+.btn-input {
+  background: $light-aqua;
+background: linear-gradient(0deg, rgba(46,196,182,1) 0%, rgba(161,230,224,1) 100%);
 }

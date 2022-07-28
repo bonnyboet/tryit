@@ -5,8 +5,8 @@
         <p><%= "$" %><%= @equipment_listing.hourly_rate %><%= " hour" %></p>
       </div>
         <%= simple_form_for [ @equipment_listing, @booking ] do |f| %>
-        <%= f.datetime_field :book_from %>
-        <%= f.datetime_field :book_to %>
+        <%= f.datetime_field :book_from, class: "btn-input" %>
+        <%= f.datetime_field :book_to, class: "btn-input" %>
         <%= f.button :submit, class: "btn-pink" %>
       <% end %>
     </div>
