@@ -15,16 +15,18 @@ $light-aqua: #CBF3F0;
 $dark-aqua: #2EC4B6;
 
 .status {
+  color: white;
+
   &.pending {
-    color: orange;
+    background-color: orange;
   }
 
   &.accepted {
-    color: green;
+    background-color: green;
   }
 
   &.denied {
-    color: red;
+    background-color: red;
   }
 
 }

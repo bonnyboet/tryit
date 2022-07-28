@@ -15,70 +15,61 @@
   </head>
 
   <body>
-  <div class="px-5 py-2 navbar fixed-top nav nav-item dropdown p-1 shadow">
-    <div class="container">
+  <div class="px-2 py-2 navbar fixed-top nav nav-item dropdown p-1 shadow">
+
+    <div class="container pb-2">
+
       <!-- Brand and logo -->
-      <div class="d-flex flex-row">
+      <div class="d-flex flex-row" style="margin: 0!important; font-weight: bold;">
         <div class="navbar-logo">
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><title>sports_hockey</title><g fill="none"><path d="M2 17v3h2v-4H3c-.55 0-1 .45-1 1z" fill="#212121"></path><path d="M9 16H5v4l4.69-.01c.38 0 .72-.21.89-.55l.87-1.9-1.59-3.48L9 16z" fill="#212121"></path><path d="M21.71 16.29A.997.997 0 0 0 21 16h-1v4h2v-3c0-.28-.11-.53-.29-.71z" fill="#212121"></path><path d="M13.6 12.84L17.65 4H14.3l-1.76 3.97-.49 1.1-.05.14L9.7 4H6.35l4.05 8.84 1.52 3.32.08.18 1.42 3.1c.17.34.51.55.89.55L19 20v-4h-4l-1.4-3.16z" fill="#212121"></path></g></svg>
         </div>
         <div class="navbar-brand">
-          <%# <h1 style="margin: 0!important;">TryIt</h1> %>
-      <a class="navbar-brand margin: 0!important;" href="/">TryIt</a>
+          <a class="navbar-brand margin: 0!important;" href="/">TryIt</a>
         </div>
       </div>
 
       <!-- Search Bar -->
-      <div class="search-form-control form-group" id="search">
-        <%= form_tag equipment_listings_path, method: :get do %>
-        <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Find Sports Equipment"
-          %>
-          <div class="form-inline">
-            <%= submit_tag "Search", class: "btn btn-pink" %>
-          </div>
-        <% end %>
-      </div>
-
-
+      <%= render 'layouts/search' %>
 
       <!-- Dropdown menu -->
       <% if user_signed_in? %>
-      <div class="dropdown">
-      <button class="btn dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 64 64"><title>menu</title><g fill="#212121"><path d="M60,34H4c-0.552,0-1-0.448-1-1v-2c0-0.552,0.448-1,1-1h56c0.552,0,1,0.448,1,1v2 C61,33.552,60.552,34,60,34z"></path> <path fill="#212121" d="M60,16H31c-0.552,0-1-0.448-1-1v-2c0-0.552,0.448-1,1-1h29c0.552,0,1,0.448,1,1v2C61,15.552,60.552,16,60,16 z"></path> <path fill="#212121" d="M33,52H4c-0.552,0-1-0.448-1-1v-2c0-0.552,0.448-1,1-1h29c0.552,0,1,0.448,1,1v2C34,51.552,33.552,52,33,52z "></path></g></svg>
-      </button>
-      <ul class="dropdown-menu text-left" aria-labelledby="dropdownMenuButton1">
-        <li><p class="dropdown-item"><%= current_user.email %></p></li>
-        <li><p class="dropdown-item" ><%= link_to "Create Listing", new_equipment_listing_path %></p></li>
-        <li><p class="dropdown-item" ><%= link_to "Pending Bookings", bookings_path %></p></li>
-        <li><p class="dropdown-item" ><%= link_to "update", edit_user_registration_path %></p></li>
-        <li><p class="dropdown-item" ><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></p></li>
-      </ul>
-      </div>
-          <% else %>
-            <div>
-              <div class="btn">
-                <%= link_to "Sign In", new_user_session_path, class: "btn-primary text-decoration-none" %>
-              </div>
-              <div class="btn">
-                <%= link_to "Sign Up",  new_user_registration_path, class: "btn-flat text-decoration-none" %>
-              </div>
-            </div>
-          <% end %>
-      </div>
-  </div>
+        <div class="dropdown">
+          <button class="btn dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 64 64"><title>menu</title><g fill="#212121"><path d="M60,34H4c-0.552,0-1-0.448-1-1v-2c0-0.552,0.448-1,1-1h56c0.552,0,1,0.448,1,1v2 C61,33.552,60.552,34,60,34z"></path> <path fill="#212121" d="M60,16H31c-0.552,0-1-0.448-1-1v-2c0-0.552,0.448-1,1-1h29c0.552,0,1,0.448,1,1v2C61,15.552,60.552,16,60,16 z"></path> <path fill="#212121" d="M33,52H4c-0.552,0-1-0.448-1-1v-2c0-0.552,0.448-1,1-1h29c0.552,0,1,0.448,1,1v2C34,51.552,33.552,52,33,52z "></path></g></svg>
+          </button>
+
+          <ul class="dropdown-menu text-left" aria-labelledby="dropdownMenuButton1">
+            <li><p class="dropdown-item"><%= current_user.email %></p></li>
+            <li><p class="dropdown-item text-decoration-none" ><%= link_to "Create Listing", new_equipment_listing_path, class: "btn text-decoration-none"%></p></li>        <li><p class="dropdown-item text-decoration-none" ><%= link_to "Pending Bookings", bookings_path, class: "btn text-decoration-none"%></p></li>
+            <li><p class="dropdown-item text-decoration-none" ><%= link_to "update", edit_user_registration_path, class: "btn text-decoration-none"%></p></li>
+            <li><p class="dropdown-item text-decoration-none" ><%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "text-decoration-none"%></p></li>
+          </ul>
+        </div>
+      <% else %>
+        <div>
+          <div class="btn">
+            <%= link_to "Sign In", new_user_session_path, class: "btn-primary text-decoration-none" %>
+          </div>
+          <div class="btn">
+            <%= link_to "Sign Up",  new_user_registration_path, class: "btn-flat text-decoration-none" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- filter pannel -->
+    <div class="container border-top pt-4">
+      <%= render 'layouts/filter' %>
+    </div>
+</div>
+
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
 
   <div class="container mt-5 py-5" style="margin-top: 4em!important">
-    <!-- filter pannel -->
-    <%= render 'layouts/filter' %>
-
     <%= yield %>
   </div>
 

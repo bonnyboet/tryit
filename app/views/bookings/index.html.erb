@@ -2,15 +2,108 @@
   <h3 class="mb-0">My Bookings</h3>
 </div>
 
+<style media="screen">
+  .card-wrapper {
+    width: 500px;
+    display: flex;
+    flex-direction: flex-column;
+  }
+
+  .booking-card {
+    display: flex;
+    width: 100%;
+    margin-bottom: 2em;
+  }
+
+  .booking-card-status {
+    border: 1px solid transparent;
+    border-radius: 20px 0px 0 20px;
+    width: 90px;
+    color: white;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .booking-card-thumbnail {
+    min-width: 80px;
+    flex-grow: 2;
+    height: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .booking-card-content {
+    width: 200px;
+    background: #D9D9D9;
+    flex-grow: 4;
+  }
+
+  .booking-card-date {
+    width: 200px;
+    background: #F0F0F0;
+    border-radius: 0px 20px 20px 0px;
+    flex-grow: 2;
+  }
+
+</style>
+
+  <% @bookings.each do | booking | %>
+    <div class="booking-card">
+      <div class="booking-card-status status"><%= booking.status %></div>
+
+      <div class="booking-card-thumbnail" style="background-image: url('<% booking.equipment_listing.photo.key %>')">
+
+      </div>
+
+      <div class="booking-card-content p-3">
+        <h3 class="m-0 mb-1"><%= booking.equipment_listing.name %></h3>
+        <span class="m-0">Address</span>
+      </div>
+
+      <div class="booking-card-date p-3">
+        <h3 class="m-0 mb-1">June 6</h3>
+        <span class="m-0">9 am - 6pm</span>
+      </div>
+
+    </div>
+
+  <% end %>
+
+
+
+
+
+<div class="row d-flex flex-wrap">
+<div class="col-12 col-sm-12 col-md-12 mr-6 bookings-list-item">
+</div>
+</div>
+
+
 <div class="row d-flex flex-wrap">
 
 <div class="col-12 col-sm-6 col-md-4 mr-6 bookings-list-item">
-<div class="card-image" style="background-image: url(https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fwww.myactivesg.com%2F-%2Fmedia%2FSSC%2FConsumer%2FImages%2FSports%2FTennis%2FGC111_1_Wikimedia.ashx%3Fla%3Den%26hash%3D229D29EB150343A79B4DDC43213C71544F0D1692)">
+<div class="listing-card-image" style="background-image: url(https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fwww.myactivesg.com%2F-%2Fmedia%2FSSC%2FConsumer%2FImages%2FSports%2FTennis%2FGC111_1_Wikimedia.ashx%3Fla%3Den%26hash%3D229D29EB150343A79B4DDC43213C71544F0D1692)">
   <p class="card-subtitle ma-2 status accepted">accepted <span class="material-icons">check_circle_outline</span></p>
 </div>
-<div class="card-body">
-  <div class="booking-header">
+<div class="listing-card-body">
+  <div class="listing-card-header">
     <h3 class="card-title ma-0">Tennis Set</h3>
+  </div>
+  <p>01 Jan 01:34 - 01 Jan 09:40</p>
+  <a href="#">VIEW LISTING</a>
+</div>
+</div>
+
+
+<div class="col-12 col-sm-6 col-md-4 mr-6 bookings-list-item">
+<div class="listing-card-image" style="background-image: url(https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fwww.myactivesg.com%2F-%2Fmedia%2FSSC%2FConsumer%2FImages%2FSports%2FTennis%2FGC111_1_Wikimedia.ashx%3Fla%3Den%26hash%3D229D29EB150343A79B4DDC43213C71544F0D1692)">
+  <p class="card-subtitle ma-2 status accepted">accepted <span class="material-icons">check_circle_outline</span></p>
+</div>
+<div class="listing-card-body">
+  <div class="listing-card-header">
+    <h3 class="listing-card-title ma-0">Tennis Set</h3>
   </div>
   <p>01 Jan 01:34 - 01 Jan 09:40</p>
   <a href="#">VIEW LISTING</a>
@@ -41,14 +134,14 @@
   bookingStatus.forEach(status => {
     if (status.innerHTML === 'accepted') {
       status.classList.add('accepted');
-      status.innerHTML = 'accepted <span class="material-icons">check_circle_outline</span>';
+      status.innerHTML = '<span class="material-icons">check_circle_outline</span>';
     } else if (status.innerHTML === 'pending') {
       status.classList.add('pending');
-      status.innerHTML = 'pending <span class="material-icons">pending</span>';
+      status.innerHTML = '<span class="material-icons">pending</span>';
 
       } else if (status.innerHTML === 'denied') {
        status.classList.add('denied');
-       status.innerHTML = 'denied <span class="material-icons">cancel</span> ';
+       status.innerHTML = '<span class="material-icons">cancel</span> ';
       }
   });
 

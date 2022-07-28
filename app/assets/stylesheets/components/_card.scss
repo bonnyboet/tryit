@@ -1,11 +1,10 @@
-.bookings-list-item {
+.listing-list-item {
   margin-bottom: 2em;
 }
 
-.card-image {
+.listing-card-image {
   width: 100%;
   height: 200px;
-  // background-image: url(https://images.unsplash.com/photo-1564226803380-91139fdcb4d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);
   background-size: cover;
   border-radius: 20px 20px 0 0;
   display: flex;
@@ -14,21 +13,22 @@
   padding: 1em;
 }
 
-.card-body {
+.listing-card-body {
   border: 1px solid transparent;
   border-radius:  0 0 20px 20px;
   background-color: white;
   min-height: 322px;
+  padding: 1em;
 }
 
-.booking-header {
+.listing-card-header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
 
-p.card-subtitle {
+p.listing-card-subtitle {
   display: flex;
   margin-top: -5px;
   background-color: white;
@@ -44,7 +44,7 @@ p.card-subtitle {
 }
 
 @media (max-width: 768px) {
-  .booking-header {
+  .listing-card-header {
     flex-direction: column-reverse;
 
     p {
