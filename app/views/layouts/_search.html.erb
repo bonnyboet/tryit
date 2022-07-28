@@ -1,8 +1,12 @@
-<%= form_tag equipment_listings_path, class: "d-flex", method: :get do %>
-  <%= text_field_tag :query,
+<div class="search-form-control form-group" id="search">
+  <%= form_tag equipment_listings_path, class: "d-flex", method: :get do %>
+    <%= text_field_tag :query,
       params[:query],
       class: "form-control",
       placeholder: "Find Sports Equipment"
     %>
-<%= submit_tag "Search", class: "btn btn-outline-success" %>
-<% end %>
+    <div class="form-inline">
+      <%= submit_tag "Search", class: "btn btn-pink" %>
+    </div>
+  <% end %>
+</div>
