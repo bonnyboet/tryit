@@ -18,6 +18,11 @@ class EquipmentListingsController < ApplicationController
     @equipment_listing_id = params[:id]
     @equipment_listing = EquipmentListing.find(@equipment_listing_id)
     @booking = Booking.new
+    @equipment_listings = EquipmentListing.all
+    @markers = [{
+        lat: @equipment_listing.latitude,
+        lng: @equipment_listing.longitude
+      }]
 
     # if @equipment_listing.nil?
     #   @equipment_listing_id = params[:id]

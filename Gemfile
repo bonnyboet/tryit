@@ -41,6 +41,8 @@ gem 'cloudinary', '~> 1.16.0'
 # Devise - handles authentication
 gem 'devise'
 
+gem "geocoder"
+
 # PG Search -
 gem 'pg_search', '~> 2.3.0'
 
