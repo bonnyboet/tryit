@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center justify-content-between mb-3 pt-5">
+<div class="d-flex align-items-center justify-content-between mb-3 ">
   <div class="text-decoration-none">
     <%= link_to "Back", root_path, class: "btn-pink" %>
   </div>
@@ -36,3 +36,7 @@
       No item found for ID <%= @equipment_listing_id %>
   <% end %>
 </div>
+
+<script>
+  document.getElementById('search').style.display = 'none'
+</script>
