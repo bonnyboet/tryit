@@ -62,8 +62,12 @@
     <div class="container border-top pt-4">
       <%= render 'layouts/filter' %>
     </div>
-</div>
+  </div>
 
+  <!-- banner showing only on the home page -->
+  <% if current_page?(root_path) %>
+    <%= render 'layouts/banner' %>
+  <% end %>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
