@@ -20,7 +20,10 @@
                             ]
  %>
     <%= f.input :hourly_rate, input_html: { min: 0, max: 1000 } %>
-    <%= f.input :address %>
+    <%= f.input :address,
+    input_html: { data: { geocoder_target: 'address' } },
+    wrapper_html: { data: { controller: 'geocoder',
+    geocoder_api_key_value: ENV["MAP_BOX_API_KEY"] } } %>
     <%= f.input :photo, as: :file %>
     <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>

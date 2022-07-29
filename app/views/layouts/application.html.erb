@@ -29,8 +29,10 @@
         </div>
       </div>
 
-      <!-- Search Bar -->
-      <%= render 'layouts/search' %>
+      <!-- Search Bar showing only on index page of listings -->
+      <% if current_page?(equipment_listings_path) %>
+        <%= render 'layouts/search' %>
+      <% end %>
 
       <!-- Dropdown menu -->
       <% if user_signed_in? %>

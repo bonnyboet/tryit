@@ -12,6 +12,15 @@ class EquipmentListingsController < ApplicationController
     else
       @equipment_listings = EquipmentListing.all
     end
+
+    @equipment_listings = EquipmentListing.all
+    @markers = @equipment_listings.geocoded.map do |equipment_listing|
+      {
+        lat: equipment_listing.latitude,
+        lng: equipment_listing.longitude,
+        image_url: helpers.asset_url("Sports_Pin")
+      }
+    end
   end
 
   def show
@@ -20,11 +29,10 @@ class EquipmentListingsController < ApplicationController
     @booking = Booking.new
     @equipment_listings = EquipmentListing.all
     @markers = [{
-        lat: @equipment_listing.latitude,
-        lng: @equipment_listing.longitude,
-        image_url: helpers.asset_url("Sports_Pin")
-      }]
-
+      lat: @equipment_listing.latitude,
+      lng: @equipment_listing.longitude,
+      image_url: helpers.asset_url("Sports_Pin")
+    }]
 
     # if @equipment_listing.nil?
     #   @equipment_listing_id = params[:id]
