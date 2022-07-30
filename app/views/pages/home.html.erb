@@ -1,28 +1,32 @@
+<h1 class="text-center">Sports Equipment</h1>
+
 <div class="d-flex align-items-center justify-content-between mb-3 ">
 
-  </div>
-
-  <div class="row ">
+</div>
+  <div class="row m-10" id="listings">
     <% EquipmentListing.all.each do |equipment| %>
-      <div class="col-12 col-sm-6 col-md-4 mr-6 bookings-list-item">
-        <div class="card-image">
-      </div>
-      <div class="card-body p-3 shadow">
-      <div class="card-title">
-        <%= equipment.name %>
-      </div>
-      <div class="card-subtitle mb-2 text-muted">
-        <p><%= equipment.category %></p>
-      </div>
-      <div class="card-text">
-        <p><%= equipment.description %></p>
-      <div class="card-footer ">
-        <%= link_to equipment_listing_path(equipment), class:"text-decoration-none" do%>
-        <div class="card-link align-middle">Check it out</div>
+      <div class="listing-list-item col-12 col-sm-6 col-md-4 mr-6">
+        <% if equipment.photo.attached? %>
+          <%= cl_image_tag equipment.photo.key, width: 300, fetch_format: :auto, crop: "scale", class: "listing-card-image" %>
+          <% else %>
+          <%= cl_image_tag "q2zwdzid3a3vo6m5786rtisfjxbb", width: 300, fetch_format: :auto, crop: "scale", class: "listing-card-image" %>
         <% end %>
-      </div>
+      <div class="listing-card-body p-3 shadow">
+        <div class="card-title">
+          <h3><%= equipment.name %></h3>
+        </div>
+        <div class="card-subtitle mb-2 text-muted">
+          <p><%= equipment.category %></p>
+        </div>
+        <div class="card-text">
+          <p><%= equipment.description %></p>
+        <div class="card-footer ">
+          <%= link_to equipment_listing_path(equipment), class:"text-decoration-none" do %>
+            <div class="card-link align-middle">Check it out</div>
+          <% end %>
         </div>
       </div>
-      </div>
-    <% end %>
-  </div>
+    </div>
+    </div>
+  <% end %>
+</div>

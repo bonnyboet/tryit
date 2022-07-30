@@ -15,7 +15,7 @@
   </head>
 
   <body>
-  <div class="px-2 py-2 navbar fixed-top nav nav-item dropdown p-1 shadow">
+ <div class="px-2 py-2 navbar sticky-top nav nav-item dropdown p-1 shadow">
 
     <div class="container pb-2">
 
@@ -29,8 +29,10 @@
         </div>
       </div>
 
-      <!-- Search Bar -->
-      <%= render 'layouts/search' %>
+      <!-- Search Bar showing only on index page of listings -->
+      <% if current_page?(equipment_listings_path) %>
+        <%= render 'layouts/search' %>
+      <% end %>
 
       <!-- Dropdown menu -->
       <% if user_signed_in? %>
@@ -62,14 +64,18 @@
     <div class="container border-top pt-4">
       <%= render 'layouts/filter' %>
     </div>
-</div>
+  </div>
 
+  <!-- banner showing only on the home page -->
+  <% if current_page?(root_path) %>
+    <%= render 'layouts/banner' %>
+  <% end %>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
 
-  <div class="container mt-5 py-5" style="margin-top: 4em!important">
+  <div class="container">
     <%= yield %>
   </div>
 
