@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_28_113229) do
+ActiveRecord::Schema.define(version: 2022_07_30_053913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(version: 2022_07_28_113229) do
     t.index ["user_id"], name: "index_equipment_listings_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.bigint "equipment_listing_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["equipment_listing_id"], name: "index_reviews_on_equipment_listing_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -78,6 +86,7 @@ ActiveRecord::Schema.define(version: 2022_07_28_113229) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -87,4 +96,5 @@ ActiveRecord::Schema.define(version: 2022_07_28_113229) do
   add_foreign_key "bookings", "equipment_listings"
   add_foreign_key "bookings", "users"
   add_foreign_key "equipment_listings", "users"
+  add_foreign_key "reviews", "equipment_listings"
 end
