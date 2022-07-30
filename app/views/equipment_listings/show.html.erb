@@ -13,17 +13,20 @@
           <% if @equipment_listing.photo.key.nil? %>
             <%= "No Image available yet" %>
           <% else %>
-         <%= cl_image_tag @equipment_listing.photo.key, height: 500, width: 1270, crop: :fill %>
+         <%= cl_image_tag @equipment_listing.photo.key, height: 500, width: 1270, crop: :fill, id: "show-page-image" %>
           <% end %>
         </div>
       </div>
       <div class="d-flex">
-        <div class="flex-fill">
-          <div class="card-title p-3">
-            <h2><%= @equipment_listing.name %></h2>
+        <div class="flex-fill mx-4">
+          <div class="card-title pt-3">
+            <h2 class="fw-bold"><%= @equipment_listing.name %></h2>
           </div>
-          <div class="card-subtitle mb-2 status">
-            <p><%= @equipment_listing.description %></p>
+          <div class="card-title border-bottom">
+            <p class="fs-7 fst-italic"><%= @equipment_listing.address %></p>
+          </div>
+          <div class="listing-show-text card-subtitle status pt-4">
+            <p class="fs-5"><%= @equipment_listing.description %></p>
           </div>
         </div>
      <%= render "bookings/form", booking: @booking %>
