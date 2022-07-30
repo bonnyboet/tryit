@@ -10,8 +10,8 @@
 
         <div class="listing-card-image">
           <%= cl_image_tag equipment.photo.key, width: 300, fetch_format: :auto, crop: "scale", class: "listing-card-image" %>
-          <div class="d-flex justify-content-end card-thumbnail">
-          <div class="status"><%= equipment.available %></div>
+          <div class="d-flex card-thumbnail">
+            <div class="status status-container"><%= equipment.available %></div>
         </div>
         </div>
 
@@ -23,8 +23,9 @@
         <div class="card-title">
           <h3><%= equipment.name %></h3>
         </div>
-        <div class="card-subtitle mb-2 text-muted">
+        <div class="card-subtitle mb-2 text-muted d-flex justify-content-between">
           <p><%= equipment.category %></p>
+          <p>$<%= equipment.hourly_rate %> p/h</p>
         </div>
         <div class="card-text">
           <p><%= equipment.description %></p>
