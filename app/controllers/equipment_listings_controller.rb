@@ -22,7 +22,7 @@ class EquipmentListingsController < ApplicationController
     @markers = [{
       lat: @equipment_listing.latitude,
       lng: @equipment_listing.longitude,
-      image_url: helpers.asset_url("Sports_Pin")
+      image_url: helpers.asset_url("Sports_Pin.png")
     }]
 
     # if @equipment_listing.nil?
