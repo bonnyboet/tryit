@@ -5,6 +5,7 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "mapbox-gl/dist/mapbox-gl.css"
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
 
+<<<<<<< HEAD
 // import { Controller } from '@hotwired/stimulus'
 // import mapboxgl from 'mapbox-gl'
 // import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
@@ -12,6 +13,8 @@ import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
 import "mapbox-gl/dist/mapbox-gl.css"
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
 
+=======
+>>>>>>> master
 export default class extends Controller {
   static values = {
     apiKey: String,
