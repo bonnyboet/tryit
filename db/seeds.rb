@@ -50,6 +50,14 @@ if EquipmentListing.count.zero?
   file1 = URI.open('https://images.unsplash.com/photo-1617883861744-13b534e3b928?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80')
   listing1.photo.attach(io: file1, filename: 'user.png', content_type: 'image/png')
 
+  # Reviews
+  5.times do
+    Review.create!(
+      content: "The Wilson Clash is rated our best tennis racquet for intermediate players. The Clash has new technology built into the frame that gives it a flexible, arm-friendly feel, unlike any other tennis racquet on the market. This racquet has excellent comfort, control, and feel for beginners and intermediate players.",
+      equipment_listing: listing1
+    )
+  end
+
   user2 = User.create!(
     email: Faker::Internet.email,
     password: Faker::String.random(length: 8)
