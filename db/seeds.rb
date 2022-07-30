@@ -149,31 +149,37 @@ if EquipmentListing.count.zero?
     ')
   listing7.photo.attach(io: file7, filename: 'user.png', content_type: 'image/png')
 
-  # User.create!(
-#   email: Faker::Internet.email,
-#   password: Faker::String.random(length: 8)
-# ).equipment_listings.create!(
-#   name: "Table tennis set",
-#   description: "Set of 4 red, black ping pong paddles and 3 white balls is designed for fun with family and friends.",
-#   category: "Ball & Net",
-#   hourly_rate: 30,
-#   available: true,
-#   user_id: User.last.id,
-#   address: "Hachioji"
-# )
+  user8 = User.create!(
+    email: Faker::Internet.email,
+    password: Faker::String.random(length: 8)
+  )
+  listing8 = user8.equipment_listings.create!(
+    name: "Table tennis set",
+    description: "Set of 4 red, black ping pong paddles and 3 white balls is designed for fun with family and friends.",
+    category: "Ball & Net",
+    hourly_rate: 30,
+    available: true,
+    user_id: User.last.id,
+    address: "Hachioji"
+  )
+  file8 = URI.open('https://images.unsplash.com/photo-1611251126118-b1d4f99600a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')
+  listing8.photo.attach(io: file8, filename: 'user.png', content_type: 'image/png')
 
-# User.create!(
-#   email: Faker::Internet.email,
-#   password: Faker::String.random(length: 8)
-# ).equipment_listings.create!(
-#   name: "Table tennis set",
-#   description: "Set of 4 red, black ping pong paddles and 3 white balls is designed for fun with family and friends.",
-#   category: "Ball & Net",
-#   hourly_rate: 30,
-#   available: true,
-#   user_id: User.last.id,
-#   address: "Hachioji"
-# )
+  user9 = User.create!(
+    email: Faker::Internet.email,
+    password: Faker::String.random(length: 8)
+  )
+  listing9 = user9.equipment_listings.create!(
+    name: "Table tennis set",
+    description: "Set of 4 red, black ping pong paddles and 3 white balls is designed for fun with family and friends.",
+    category: "Ball & Net",
+    hourly_rate: 30,
+    available: true,
+    user_id: User.last.id,
+    address: "Hachioji"
+  )
+  file9 = URI.open('https://images.unsplash.com/photo-1630610280030-da8fbc7ca25a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80')
+  listing9.photo.attach(io: file9, filename: 'user.png', content_type: 'image/png')
 
 end
 
