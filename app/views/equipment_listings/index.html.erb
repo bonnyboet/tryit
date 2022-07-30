@@ -1,28 +1,55 @@
 <div class="row m-10" id="listings">
     <% @equipment_listings.each do |equipment_listing| %>
       <div class="listing-list-item col-12 col-sm-6 col-md-4 mr-6 mt-5">
-        <% if equipment_listing.photo.attached? %>
-          <%= cl_image_tag equipment_listing.photo.key, width: 300, fetch_format: :auto, crop: "scale", class: "listing-card-image" %>
-          <% else %>
-          <%= cl_image_tag "q2zwdzid3a3vo6m5786rtisfjxbb", width: 300, fetch_format: :auto, crop: "scale", class: "listing-card-image" %>
-        <% end %>
 
-        <div class="listing-card-body p-3 shadow">
-          <div class="card-title">
-            <h3><%= equipment_listing.name %></h3>
-          </div>
-          <div class="card-subtitle mb-2 text-muted">
-            <p><%= equipment_listing.category %></p>
-          </div>
-          <div class="card-text">
-            <p><%= equipment_listing.description %></p>
-          </div>
-          <div class="card-footer ">
-          <%= link_to equipment_listing_path(equipment_listing), class:"text-decoration-none" do %>
-            <div class="card-link align-middle">Check it out</div>
-          <% end %>
-          </div>
+      <div class="listing-card-image">
+          <% if booking.equipment_listing.photo.attached? %>
+          style="background-image: url('<%= cl_image_path equipment_listing.photo.key  %>')"
+        <% else %>
+          style="background-image: url('https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg')"
+        <% end %>>
+
+      </div>
+
+      <div class="listing-card-body p-3 shadow">
+        <div class="card-title">
+          <h3><%= equipment_listing.name %></h3>
+        </div>
+        <div class="card-subtitle mb-2 text-muted">
+          <p><%= equipment_listing.category %></p>
+        </div>
+        <div class="card-text">
+          <p><%= equipment_listing.description %></p>
+        </div>
+        <div class="card-footer ">
+        <%= link_to equipment_listing_path(equipment_listing), class:"text-decoration-none" do %>
+          <div class="card-link align-middle">Check it out</div>
+        <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 </div>
+
+
+
+<script>
+
+  // Adding styling after generating bookings list
+  var bookingStatus = document.querySelectorAll('.status')
+  bookingStatus.forEach(status => {
+    if (status.innerHTML === 'accepted') {
+      status.classList.add('accepted');
+      status.innerHTML = '<span class="material-icons">check_circle_outline</span>';
+    } else if (status.innerHTML === 'pending') {
+      status.classList.add('pending');
+      status.innerHTML = '<span class="material-icons">pending</span>';
+
+      } else if (status.innerHTML === 'denied') {
+       status.classList.add('denied');
+       status.innerHTML = '<span class="material-icons">cancel</span> ';
+      }
+  });
+
+
+</script>
