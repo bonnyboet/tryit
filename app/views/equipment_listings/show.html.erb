@@ -17,10 +17,10 @@
           <% end %>
         </div>
       </div>
-      <div class="d-flex">
+      <div class="d-flex pb-4">
         <div class="flex-fill mx-4">
           <div class="card-title pt-3">
-            <h2 class="fw-bold"><%= @equipment_listing.name %></h2>
+            <h1 class="fw-bold"><%= @equipment_listing.name %></h1>
           </div>
           <div class="card-title border-bottom">
             <p class="fs-7 fst-italic"><%= @equipment_listing.address %></p>
@@ -32,11 +32,27 @@
      <%= render "bookings/form", booking: @booking %>
       </div>
     </div>
-    <div class="reviews-container">
-      
+
+    <div class="reviews-container border-top pt-4">
+    <% if Review.present? %>
+      <h2 class="fw-bold">Reviews for <%= @equipment_listing.name %></h2>
+      <%= simple_form_for [@equipment_listing, @review] do |f| %>
+      <%= f.input :content, as: :text, label: false %>
+      <%= f.submit 'Submit', class:"btn-pink" %>
+      <% end %>
+
+      <% @equipment_listing.reviews.order(created_at: :desc).each do |equipment_listing| %>
+        <div>
+          <p class="pt-3 fst-italic"><i class="fas fa-quote-left fas-2x"></i> <%= @review.content %></p>
+        </div>
+      <% end %>
+    <% else %>
+      <h2 class="fw-bold">Be the first one to leave a review for <%= @equipment_listing.name %></h2>
+    <% end %>
     </div>
 
-    <div class="map-container pt-4">
+    <div class="map-container pt-4 border-top mt-4">
+      <h2 class="fw-bold">Where you will pick it up</h2>
       <%= render "equipment_listings/map" %>
     </div>
 
