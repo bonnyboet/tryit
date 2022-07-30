@@ -1,8 +1,20 @@
 class BookingsController < ApplicationController
   # before_action :set_booking, only: [:show]
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.where(user: current_user)
+  end
+
+  def index_in
+    bookings = []
+    listings = EquipmentListing.where(user: current_user)
+    listings.each do |listing|
+      listing.bookings.each do |booking|
+        bookings << booking
+      end
+    end
+    @bookings = bookings
   end
 
   def new

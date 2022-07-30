@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [ :index, :update ] do
     collection do
-      get '/requests', to: 'bookings#requests_index', as: 'requests'
+      get '/requests', to: 'bookings#index_in', as: 'requests'
       patch '/bookings/:id', to: 'bookings#request_accept'
       patch '/bookings/:id', to: 'bookings#request_deny'
     end
