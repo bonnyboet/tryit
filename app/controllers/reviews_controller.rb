@@ -1,4 +1,9 @@
 class ReviewsController < ApplicationController
+  def new
+    @review = Review.new
+    @equipment_listing = EquipmentListing.find(params[:equipment_listing_id])
+  end
+
   def create
     @review = Review.new(review_params)
     @equipment_listing = EquipmentListing.find(params[:equipment_listing_id])

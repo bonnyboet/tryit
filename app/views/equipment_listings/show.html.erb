@@ -32,18 +32,20 @@
      <%= render "bookings/form", booking: @booking %>
       </div>
     </div>
-
+    <!--- Review -->
     <div class="reviews-container border-top pt-4">
     <% if Review.present? %>
       <h2 class="fw-bold">Reviews for <%= @equipment_listing.name %></h2>
+      <!--- Review Form -->
       <%= simple_form_for [@equipment_listing, @review] do |f| %>
       <%= f.input :content, as: :text, label: false %>
       <%= f.submit 'Submit', class:"btn-pink" %>
       <% end %>
 
-      <% @equipment_listing.reviews.order(created_at: :desc).each do |equipment_listing| %>
+      <!--- Review List -->
+      <% @equipment_listing.reviews.order(created_at: :desc).each do |review| %>
         <div>
-          <p class="pt-3 fst-italic"><i class="fas fa-quote-left fas-2x"></i> <%= @review.content %></p>
+          <p id="reviews" class="pt-3 fst-italic"><i class="fas fa-quote-left fas-2x"></i> <%= review.content %></p>
         </div>
       <% end %>
     <% else %>
